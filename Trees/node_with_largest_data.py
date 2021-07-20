@@ -4,7 +4,6 @@ class BinaryTreeNode:
         self.left = None
         self.right = None
 
-
 def treeInput():
     rootData = int(input())
 
@@ -17,7 +16,6 @@ def treeInput():
     root.left = leftTree
     root.right = rightTree
     return root
-
 
 def printTree(root):
     if root is None:
@@ -37,17 +35,15 @@ def printTree(root):
     printTree(root.right)
 
 
-def sum_of_nodes(root):
+def largest(root):
     if root is None:
-        return 0
-    
-    leftSum = sum_of_nodes(root.left)
-    rightSum = sum_of_nodes(root.right)
+        return -1
 
-    return root.data + leftSum + rightSum
+    maxLeft = largest(root.left)
+    maxRight = largest(root.right)
 
-
+    return max(root.data,max(maxLeft,maxRight))
 
 root = treeInput()
 printTree(root)
-print(sum_of_nodes(root))
+print(largest(root))
