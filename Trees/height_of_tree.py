@@ -35,18 +35,20 @@ def printTree(root):
     printTree(root.right)
 
 
-def largest(root):
+def height(root):
+
     if root is None:
-        return float("-inf")
+        return 0
 
-    maxLeft = largest(root.left)
-    maxRight = largest(root.right)
+    leftHt = height(root.left)
+    rightHt = height(root.right)
 
-    return max(root.data,max(maxLeft,maxRight))
+    return max(leftHt,rightHt) + 1
+
 
 root = treeInput()
 printTree(root)
-print(largest(root))
+print(height(root))
 
 # Time Complexity O(n) where n are the no of nodes in a tree
 # Space Complexity O(n) due to recursion stack
