@@ -2,7 +2,7 @@ from collections import deque
 
 def number_of_connected_components(n, edges):
     # Write your code here
-    visited = [0 for i in range(0,n,1)]
+    visited = [-1 for i in range(0,n,1)]
     
     def buildadjList(n, edges):
     
@@ -30,14 +30,24 @@ def number_of_connected_components(n, edges):
                 if visited[neighbor] == 0:
                     visited[neighbor] = 1
                     q.append(neighbor)
+
+
+    def dfs(source,adjList):
+
+        visited[source] = 1
+
+        for neighbor in adjList[source]:
+            if visited[neighbor] == -1:
+                visited[neighbor] = 1
+                dfs(neighbor,adjList)
                     
                     
     def outer(n, edges, visited, adjList):
         components = 0
         for v in range(0,n,1):
-            if visited[v] == 0:
+            if visited[v] == -1:
                 components += 1
-                bfs(v,adjList)
+                dfs(v,adjList)
            
         return components
         
