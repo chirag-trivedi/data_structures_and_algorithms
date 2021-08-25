@@ -20,15 +20,15 @@ def minimum_coins(coins, value):
     
     
     for i in range(1,value+1,1):
-        temp = []
+        temp = float('inf')
         for j in coins:
             if i - j < 0:
                 continue
             else:
-                temp.append(table[i-j]+1)
-        print('temp=',temp)
-        table[i] = min(temp)
-        print('table=',table)   
+                temp = min(table[i-j]+1,temp)
+        
+        table[i] = temp
+        
                 
     return table[value]
 
