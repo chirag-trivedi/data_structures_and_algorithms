@@ -17,3 +17,6 @@ def binary_strings(n):
     return result
 
 print(binary_strings(3))
+
+# Time Complexity O(2^n)
+# Space Complexity O(n)
