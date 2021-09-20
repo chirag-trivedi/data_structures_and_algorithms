@@ -28,3 +28,6 @@ def permutations(arr):
 
 arr = [1,2,3]
 print(permutations(arr))
+
+# Space Complex Aux Space O(n) 
+# Time Complex O(n!*n)
