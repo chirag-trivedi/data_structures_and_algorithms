@@ -1,15 +1,21 @@
-def sum_of_digits(n):
+def sum_of_digits(n,val):
 
-    div_n = n // 10
-    rem_n = n % 10
+    if n % 10 == n:
+        return n + val
 
-    if div_n < 10:
-        return div_n + rem_n
-    else:
-        return rem_n + sum_of_digits(div_n)
+    n_mod = n % 10
+    n_div = n // 10
+
+    val = val + n_mod
+
+    return sum_of_digits(n_div,val)
+    
 
 
 
-
+val = 0
 n = int(input())
-print(sum_of_digits(n))
+print(sum_of_digits(n,val))
+
+# Time Complexity O(n)
+# Space Complexity O(n)
