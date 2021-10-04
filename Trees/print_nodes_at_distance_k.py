@@ -35,26 +35,30 @@ def printTree(root):
     printTree(root.right)
 
 
-def maxDepth(root):
+def distanceK(root,k,res):
 
-    # Check for empty root
+        # Check for empty root
         if root is None:
-            return 0
-        
-        # Check the left subtree
-        maxL = maxDepth(root.left)
-        
-        # Check the right sub tree
-        maxR = maxDepth(root.right)
-        
-        # Find max of height and return
-        
-        return max(maxL,maxR) + 1
+            return
+            
+        # if k is 0 then add node to res 
+        if k == 0:
+            res.append(root.data)
+
+
+        # Call for left subtree and decrement k by 1
+        distanceK(root.left,k-1,res)
+
+        # Call for right subtree and decrement k by 1
+        distanceK(root.right,k-1,res)
 
 
 root = treeInput()
+k = int(input())
 printTree(root)
-print(maxDepth(root))
+res = []
+distanceK(root,k,res)
+print(res)
 
 # Time Complexity O(n) where n are the no of nodes in a tree
 # Space Complexity O(h) due to recursion stack

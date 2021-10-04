@@ -35,26 +35,19 @@ def printTree(root):
     printTree(root.right)
 
 
-def maxDepth(root):
+def size(root):
 
-    # Check for empty root
-        if root is None:
-            return 0
-        
-        # Check the left subtree
-        maxL = maxDepth(root.left)
-        
-        # Check the right sub tree
-        maxR = maxDepth(root.right)
-        
-        # Find max of height and return
-        
-        return max(maxL,maxR) + 1
+    if root is None:
+        return 0
+
+    else:
+        return 1 + size(root.left)  + size(root.right) 
+
 
 
 root = treeInput()
 printTree(root)
-print(maxDepth(root))
+print(size(root))
 
 # Time Complexity O(n) where n are the no of nodes in a tree
 # Space Complexity O(h) due to recursion stack
