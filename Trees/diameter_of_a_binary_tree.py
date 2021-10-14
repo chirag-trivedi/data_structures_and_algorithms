@@ -48,16 +48,30 @@ def height(root):
 
 def diameter(root):
 
+    globalbox = 0
+
     if root is None:
-        return 0
+        return globalbox
 
-    d1 = 1 + height(root.left) + height(root.right)
+    def dfshelper(root):
+        if root.left is None and root.right is None:
+            return 0 
 
-    d2 = diameter(root.left)
+        mydia = 0
+        if root.left:
+            LH = dfshelper(root.left)
+            mydia += LH + 1
+        if root.right:
+            RH = dfshelper(root.right)
+            mydia += RH + 1
 
-    d3 = diameter(root.right)
+        globalbox = max(globalbox,mydia)
 
-    return max(d1,max(d2,d3))
+        return max(LH,RH) + 1
+
+    dfshelper(root)
+
+    return globalbox
 
 
 root = treeInput()
