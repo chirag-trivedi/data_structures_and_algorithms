@@ -39,7 +39,7 @@ def bipartite(node_count, edge_start, edge_end):
                 else:
                     if neighbor != parent[node]:
                         return True
-                        
+                                                                                                                                                                                                                                                                                                                                                                
         return False
         
      
